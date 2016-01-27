@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		852E413B1C57A2980021D07B /* mv.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 852E413A1C57A2980021D07B /* mv.mp4 */; };
 		853677E71C38B8160037301B /* 霍尊-卷珠帘(Live版).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 853677E61C38B8160037301B /* 霍尊-卷珠帘(Live版).mp3 */; };
 		855BBA5B1C38FA8600D8C1F1 /* ZLBMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBA5A1C38FA8600D8C1F1 /* ZLBMainViewController.m */; };
 		855BBA641C3902D700D8C1F1 /* ZLBTopImagesCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBA631C3902D700D8C1F1 /* ZLBTopImagesCollectionReusableView.m */; };
@@ -129,6 +130,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		852E413A1C57A2980021D07B /* mv.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = mv.mp4; path = video.bundle/mv.mp4; sourceTree = "<group>"; };
 		853677E61C38B8160037301B /* 霍尊-卷珠帘(Live版).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "霍尊-卷珠帘(Live版).mp3"; sourceTree = "<group>"; };
 		855BBA591C38FA8600D8C1F1 /* ZLBMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBMainViewController.h; sourceTree = "<group>"; };
 		855BBA5A1C38FA8600D8C1F1 /* ZLBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBMainViewController.m; sourceTree = "<group>"; };
@@ -724,6 +726,7 @@
 			children = (
 				853677E61C38B8160037301B /* 霍尊-卷珠帘(Live版).mp3 */,
 				855BBB6D1C3958C700D8C1F1 /* silent_qcif.yuv */,
+				852E413A1C57A2980021D07B /* mv.mp4 */,
 				85CAC13F1C35522E002897DB /* video.bundle */,
 				85CAC1201C355091002897DB /* 5540385469401b10912f7a24-6.mp4 */,
 				85CAC1211C355091002897DB /* media_Player_left@3x.png */,
@@ -826,6 +829,7 @@
 				855BBB471C390B7100D8C1F1 /* MJRefresh.bundle in Resources */,
 				85CAC1301C355091002897DB /* media_Player_left@3x.png in Resources */,
 				85CAC13B1C355091002897DB /* 收藏_选中_plyer.png in Resources */,
+				852E413B1C57A2980021D07B /* mv.mp4 in Resources */,
 				855BBB011C390B4A00D8C1F1 /* NotificationBackgroundWarning.png in Resources */,
 				85CAC1331C355091002897DB /* 分享_plyer.png in Resources */,
 				855BBB051C390B4A00D8C1F1 /* NotificationButtonBackground.png in Resources */,
