@@ -5,7 +5,7 @@
 //  Created by tarena on 16/1/3.
 //  Copyright © 2016年 tarena. All rights reserved.
 //
-
+//http://c.open.163.com/mobile/recommend/v1.do?mt=iphone
 #import <Foundation/Foundation.h>
 
 @interface ZLBCategory : NSObject

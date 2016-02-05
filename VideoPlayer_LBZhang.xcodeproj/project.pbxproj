@@ -94,7 +94,6 @@
 		855BBB5C1C390B7E00D8C1F1 /* MJDIYAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBB541C390B7E00D8C1F1 /* MJDIYAutoFooter.m */; };
 		855BBB5D1C390B7E00D8C1F1 /* MJDIYBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBB561C390B7E00D8C1F1 /* MJDIYBackFooter.m */; };
 		855BBB5E1C390B7E00D8C1F1 /* MJDIYHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBB581C390B7E00D8C1F1 /* MJDIYHeader.m */; };
-		855BBB611C390F0E00D8C1F1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBB601C390F0E00D8C1F1 /* MBProgressHUD.m */; };
 		855BBB641C39152100D8C1F1 /* ZLBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBB631C39152100D8C1F1 /* ZLBDataManager.m */; };
 		855BBB671C39182E00D8C1F1 /* ZLBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBB661C39182E00D8C1F1 /* ZLBCategory.m */; };
 		855BBB6B1C391FC700D8C1F1 /* ZLBCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 855BBB691C391FC700D8C1F1 /* ZLBCell.m */; };
@@ -129,6 +128,8 @@
 		85F72A3E1C3AA03C00C67D09 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F72A3D1C3AA03C00C67D09 /* QuartzCore.framework */; };
 		D8995A891C636D7D0042A0CD /* ZLBContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A881C636D7D0042A0CD /* ZLBContent.m */; };
 		D8995A8C1C6370B90042A0CD /* ZLBClassContentVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A8B1C6370B90042A0CD /* ZLBClassContentVideo.m */; };
+		D8995A921C64D5660042A0CD /* ZLBWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A911C64D5660042A0CD /* ZLBWebViewViewController.m */; };
+		D8995A951C64E0560042A0CD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A941C64E0560042A0CD /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -290,8 +291,6 @@
 		855BBB561C390B7E00D8C1F1 /* MJDIYBackFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDIYBackFooter.m; sourceTree = "<group>"; };
 		855BBB571C390B7E00D8C1F1 /* MJDIYHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDIYHeader.h; sourceTree = "<group>"; };
 		855BBB581C390B7E00D8C1F1 /* MJDIYHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDIYHeader.m; sourceTree = "<group>"; };
-		855BBB5F1C390F0E00D8C1F1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		855BBB601C390F0E00D8C1F1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		855BBB621C39152100D8C1F1 /* ZLBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBDataManager.h; sourceTree = "<group>"; };
 		855BBB631C39152100D8C1F1 /* ZLBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBDataManager.m; sourceTree = "<group>"; };
 		855BBB651C39182E00D8C1F1 /* ZLBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBCategory.h; sourceTree = "<group>"; };
@@ -338,6 +337,10 @@
 		D8995A881C636D7D0042A0CD /* ZLBContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBContent.m; sourceTree = "<group>"; };
 		D8995A8A1C6370B90042A0CD /* ZLBClassContentVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBClassContentVideo.h; sourceTree = "<group>"; };
 		D8995A8B1C6370B90042A0CD /* ZLBClassContentVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBClassContentVideo.m; sourceTree = "<group>"; };
+		D8995A901C64D5660042A0CD /* ZLBWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBWebViewViewController.h; sourceTree = "<group>"; };
+		D8995A911C64D5660042A0CD /* ZLBWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBWebViewViewController.m; sourceTree = "<group>"; };
+		D8995A931C64E0560042A0CD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D8995A941C64E0560042A0CD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,8 +359,8 @@
 		853677EC1C38E8940037301B /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				855BBB5F1C390F0E00D8C1F1 /* MBProgressHUD.h */,
-				855BBB601C390F0E00D8C1F1 /* MBProgressHUD.m */,
+				D8995A931C64E0560042A0CD /* MBProgressHUD.h */,
+				D8995A941C64E0560042A0CD /* MBProgressHUD.m */,
 				855BBB4C1C390B7E00D8C1F1 /* DIY */,
 				855BBB0C1C390B7100D8C1F1 /* MJRefresh */,
 				855BBA681C390B4900D8C1F1 /* AFNetworking */,
@@ -398,6 +401,8 @@
 				855BBA5A1C38FA8600D8C1F1 /* ZLBMainViewController.m */,
 				85F72A331C3A8C2E00C67D09 /* TestViewController.h */,
 				85F72A341C3A8C2E00C67D09 /* TestViewController.m */,
+				D8995A901C64D5660042A0CD /* ZLBWebViewViewController.h */,
+				D8995A911C64D5660042A0CD /* ZLBWebViewViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -875,6 +880,7 @@
 				855BBB431C390B7100D8C1F1 /* MJRefreshBackStateFooter.m in Sources */,
 				855BBAD81C390B4A00D8C1F1 /* AFURLConnectionOperation.m in Sources */,
 				855BBB451C390B7100D8C1F1 /* MJRefreshNormalHeader.m in Sources */,
+				D8995A951C64E0560042A0CD /* MBProgressHUD.m in Sources */,
 				855BBAE21C390B4A00D8C1F1 /* UIRefreshControl+AFNetworking.m in Sources */,
 				855BBB461C390B7100D8C1F1 /* MJRefreshStateHeader.m in Sources */,
 				D8995A891C636D7D0042A0CD /* ZLBContent.m in Sources */,
@@ -901,10 +907,10 @@
 				855BBB421C390B7100D8C1F1 /* MJRefreshBackNormalFooter.m in Sources */,
 				85F72A351C3A8C2E00C67D09 /* TestViewController.m in Sources */,
 				855BBAE01C390B4A00D8C1F1 /* UIImageView+AFNetworking.m in Sources */,
-				855BBB611C390F0E00D8C1F1 /* MBProgressHUD.m in Sources */,
 				855BBAEF1C390B4A00D8C1F1 /* UIButton+WebCache.m in Sources */,
 				855BBAF01C390B4A00D8C1F1 /* UIImage+GIF.m in Sources */,
 				85F72A2F1C3A8A3D00C67D09 /* ZLBYUV.m in Sources */,
+				D8995A921C64D5660042A0CD /* ZLBWebViewViewController.m in Sources */,
 				855BBB3A1C390B7100D8C1F1 /* MJRefreshBackFooter.m in Sources */,
 				855BBAD51C390B4A00D8C1F1 /* AFHTTPSessionManager.m in Sources */,
 				855BBADD1C390B4A00D8C1F1 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

@@ -18,10 +18,12 @@
 #import "ViewController.h"
 #import "AFNetworking.h"
 #import "ZLBContent.h"
-#import "ZLBClassContentVideo.h"
+#import "ZLBWebViewViewController.h"
 @interface ZLBMainViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *CollectionView;
 @property (nonatomic, strong) NSMutableArray *cateGory;
+
+
 
 @end
 
@@ -33,8 +35,27 @@
     }
     return _cateGory;
 }
+//添加通知
+-(void)addObservers{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(observer:) name:@"topImageViewTap" object:nil];
+}
+-(void)observer:(NSNotification*) notification{
+    NSDictionary *dic = notification.userInfo;
+    id vc = dic[@"vc"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+//移除通知
+-(void)removeObservers{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    
+}
+-(void)dealloc{
+    [self removeObservers];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addObservers];
+    //[self removeObservers];
     self.CollectionView.dataSource = self;
     self.CollectionView.delegate = self;
     [self.CollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
@@ -139,29 +160,36 @@
     NSArray *courses = [ZLBDataManager parseClassByType:indexPath.section withNSArray:self.cateGory];
     ZLBClassVos *course = courses[indexPath.item];
     //http://so.open.163.com/movie/MBCP3VMPL/getMovies4Ipad.htm
+   
     //MBCP3VMPL 是contentId
-    NSString *contentUrlStr = [NSString stringWithFormat:@"http://so.open.163.com/movie/%@/getMovies4Ipad.htm",course.contentId];
-    NSLog(@"ssss%@",contentUrlStr);
-    ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"playVC"];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    //接着获得content的json数据
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager new];
-    [manager GET:contentUrlStr parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        NSLog(@"%@",responseObject);
-        ZLBContent *content = [ZLBDataManager parseClassContent:(NSDictionary *)responseObject];
-        NSArray *videoList = [ZLBDataManager parseVideoFromContent:content];
-        ZLBClassContentVideo *video = videoList.firstObject;
-        NSURL *url = [NSURL URLWithString:video.repovideourlmp4];
-        vc.movieURL = url;
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        [self presentViewController:vc animated:YES completion:nil];
-        
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        NSLog(@"");
-    }];
-//    NSURL *contentUrl = [NSURL URLWithString:contentUrlStr];
-//    vc.movieURL = contentUrl;
-//
+    if (![course.contentId isEqualToString:@""]) {//如果contentId 有值,里面有MP4的接口,就进入播放界面
+         NSString *contentUrlStr = [NSString stringWithFormat:@"http://so.open.163.com/movie/%@/getMovies4Ipad.htm",course.contentId];
+        NSLog(@"ssss%@",contentUrlStr);
+        ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"playVC"];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        //接着获得content的json数据
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager new];
+        [manager GET:contentUrlStr parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+            NSLog(@"%@",responseObject);
+            ZLBContent *content = [ZLBDataManager parseClassContent:(NSDictionary *)responseObject];
+            NSArray *videoList = [ZLBDataManager parseVideoFromContent:content];
+            ZLBClassContentVideo *video = videoList.firstObject;
+            NSURL *url = [NSURL URLWithString:video.repovideourlmp4];
+            vc.movieURL = url;
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            [self presentViewController:vc animated:YES completion:nil];
+            
+        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+            NSLog(@"");
+        }];
+    }else{//如果没有MP4的接口 就用webView
+        ZLBWebViewViewController *webVC = [ZLBWebViewViewController new];
+        NSURL *url = [NSURL URLWithString:course.contentUrl];
+        webVC.url = url;
+        [self.navigationController pushViewController:webVC animated:YES];
+    }
+   
+
 }
 
 

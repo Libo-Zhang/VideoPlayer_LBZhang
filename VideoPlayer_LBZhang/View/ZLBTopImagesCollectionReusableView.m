@@ -10,6 +10,9 @@
 #import "ZLBClassVos.h"
 #import "UIImageView+WebCache.h"
 #import "ZLBDataManager.h"
+#import "ViewController.h"
+#import "ZLBWebViewViewController.h"
+#import "AFNetworking.h"
 @interface ZLBTopImagesCollectionReusableView ()
 @property (nonatomic, strong)UIScrollView *scroll;
 @end
@@ -38,6 +41,9 @@
         for (int i = 0; i < tempList.count; i ++) {
             ZLBClassVos *vos = tempList[i];
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i *  self.superview.frame.size.width, 0, self.superview.frame.size.width, 100)];
+            imageView.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+            [imageView addGestureRecognizer:tap];
             [_scroll addSubview:imageView];
             [imageView sd_setImageWithURL:[NSURL URLWithString:vos.picUrl] placeholderImage:[UIImage imageNamed:@""]];
             
@@ -46,6 +52,46 @@
         
 	}
 	return _scroll;
+}
+-(void)tap:(UIGestureRecognizer*)gesure{
+    int x = gesure.view.frame.origin.x / self.superview.frame.size.width;
+    NSLog(@"hahahahah%d",x);
+     NSArray *tempList = [ZLBDataManager parseClassByType:0 withNSArray:self.category];
+     ZLBClassVos *vos = tempList[x];
+    
+    if (![vos.contentId isEqualToString:@""]) {//如果contentId 有值,里面有MP4的接口,就进入播放界面
+        NSString *contentUrlStr = [NSString stringWithFormat:@"http://so.open.163.com/movie/%@/getMovies4Ipad.htm",vos.contentId];
+        NSLog(@"ssss%@",contentUrlStr);
+        ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"playVC"];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        //接着获得content的json数据
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager new];
+        [manager GET:contentUrlStr parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+            NSLog(@"%@",responseObject);
+            ZLBContent *content = [ZLBDataManager parseClassContent:(NSDictionary *)responseObject];
+            NSArray *videoList = [ZLBDataManager parseVideoFromContent:content];
+            ZLBClassContentVideo *video = videoList.firstObject;
+            NSURL *url = [NSURL URLWithString:video.repovideourlmp4];
+            vc.movieURL = url;
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            NSMutableDictionary *mudic = [NSMutableDictionary dictionary];
+            mudic[@"vc"] = vc;
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"topImageViewTap" object:nil userInfo:mudic];
+           // [ presentViewController:vc animated:YES completion:nil];
+            
+        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+            NSLog(@"");
+        }];
+    }else{//如果没有MP4的接口 就用webView
+        ZLBWebViewViewController *webVC = [ZLBWebViewViewController new];
+        NSURL *url = [NSURL URLWithString:vos.contentUrl];
+        webVC.url = url;
+      //  [self.navigationController pushViewController:webVC animated:YES];
+    }
+
+    
+    
+    
 }
 
 @end
