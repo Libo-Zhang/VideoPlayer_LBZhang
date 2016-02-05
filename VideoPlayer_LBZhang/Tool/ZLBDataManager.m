@@ -10,8 +10,9 @@
 #import "ZLBCategory.h"
 #import "ZLBClassVos.h"
 @implementation ZLBDataManager
-
+//返回的数组是解析好的ZLBCategory
 +(NSArray *)parseNSArray:(NSArray *)arraylist{
+
     NSMutableArray *Arr = [NSMutableArray array];
     for (NSDictionary *dic in arraylist) {
         ZLBCategory *cate = [ZLBCategory new];
@@ -20,6 +21,7 @@
     }
     return [Arr copy];
 }
+//返回的数组解析好的额ZLBClassVos
 +(NSArray *)parseClassByType:(NSInteger)type withNSArray:(NSArray *)arr{
     ZLBCategory *cate = arr[type];
     NSArray *vos = cate.vos;
@@ -30,6 +32,25 @@
         [Arr addObject:vos];
     }
     return [Arr copy];
+}
+/** 返回的是ZLBClassContent*/
++(ZLBContent *)parseClassContent:(NSDictionary *)dictionary{
+    ZLBContent *content = [[ZLBContent alloc] init];
+    [content setValuesForKeysWithDictionary:dictionary];
+    return content;
+}
+/** 返回的数组是ZLBClassContentVideo  ,from ZLBClassContent*/
++(NSArray *)parseVideoFromContent:(ZLBContent *)content{
+    NSMutableArray *mutable = [NSMutableArray array];
+    for (NSDictionary *dic in content.videoList) {
+        ZLBClassContentVideo *video = [ZLBClassContentVideo new];
+        [video setValuesForKeysWithDictionary:dic];
+        [mutable addObject:video];
+        
+    }
+    return [mutable copy];
+    
+    
 }
 
 @end

@@ -30,6 +30,8 @@
  "shareimg": null
  }
  */
+
+
 #import <Foundation/Foundation.h>
 
 @interface ZLBClassVos : NSObject
@@ -40,4 +42,6 @@
 @property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) NSString *desc;
 
+//contentID 里面放的是html,有MP4的地址 http://so.open.163.com/movie/MBCP3VMPL/getMovies4Ipad.htm
+@property (nonatomic, strong) NSString *contentId;
 @end

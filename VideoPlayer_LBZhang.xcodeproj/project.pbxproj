@@ -127,6 +127,8 @@
 		85F72A351C3A8C2E00C67D09 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F72A341C3A8C2E00C67D09 /* TestViewController.m */; };
 		85F72A3C1C3AA03200C67D09 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F72A3B1C3AA03200C67D09 /* OpenGLES.framework */; };
 		85F72A3E1C3AA03C00C67D09 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F72A3D1C3AA03C00C67D09 /* QuartzCore.framework */; };
+		D8995A891C636D7D0042A0CD /* ZLBContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A881C636D7D0042A0CD /* ZLBContent.m */; };
+		D8995A8C1C6370B90042A0CD /* ZLBClassContentVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A8B1C6370B90042A0CD /* ZLBClassContentVideo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -332,6 +334,10 @@
 		85F72A341C3A8C2E00C67D09 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		85F72A3B1C3AA03200C67D09 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		85F72A3D1C3AA03C00C67D09 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D8995A871C636D7D0042A0CD /* ZLBContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBContent.h; sourceTree = "<group>"; };
+		D8995A881C636D7D0042A0CD /* ZLBContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBContent.m; sourceTree = "<group>"; };
+		D8995A8A1C6370B90042A0CD /* ZLBClassContentVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBClassContentVideo.h; sourceTree = "<group>"; };
+		D8995A8B1C6370B90042A0CD /* ZLBClassContentVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBClassContentVideo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,14 +405,18 @@
 		853677F01C38E8B90037301B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				85F72A2D1C3A8A3D00C67D09 /* ZLBYUV.h */,
+				85F72A2E1C3A8A3D00C67D09 /* ZLBYUV.m */,
 				85E62CCE1C37D80F003421CC /* ABSMovieDecoder.h */,
 				85E62CCF1C37D80F003421CC /* ABSMovieDecoder.m */,
 				855BBB651C39182E00D8C1F1 /* ZLBCategory.h */,
 				855BBB661C39182E00D8C1F1 /* ZLBCategory.m */,
 				855BBA651C3909FE00D8C1F1 /* ZLBClassVos.h */,
 				855BBA661C3909FE00D8C1F1 /* ZLBClassVos.m */,
-				85F72A2D1C3A8A3D00C67D09 /* ZLBYUV.h */,
-				85F72A2E1C3A8A3D00C67D09 /* ZLBYUV.m */,
+				D8995A871C636D7D0042A0CD /* ZLBContent.h */,
+				D8995A881C636D7D0042A0CD /* ZLBContent.m */,
+				D8995A8A1C6370B90042A0CD /* ZLBClassContentVideo.h */,
+				D8995A8B1C6370B90042A0CD /* ZLBClassContentVideo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -867,6 +877,7 @@
 				855BBB451C390B7100D8C1F1 /* MJRefreshNormalHeader.m in Sources */,
 				855BBAE21C390B4A00D8C1F1 /* UIRefreshControl+AFNetworking.m in Sources */,
 				855BBB461C390B7100D8C1F1 /* MJRefreshStateHeader.m in Sources */,
+				D8995A891C636D7D0042A0CD /* ZLBContent.m in Sources */,
 				855BBB491C390B7100D8C1F1 /* UIScrollView+MJExtension.m in Sources */,
 				855BBB5E1C390B7E00D8C1F1 /* MJDIYHeader.m in Sources */,
 				855BBB6B1C391FC700D8C1F1 /* ZLBCell.m in Sources */,
@@ -883,6 +894,7 @@
 				855BBAEE1C390B4A00D8C1F1 /* SDWebImagePrefetcher.m in Sources */,
 				855BBADE1C390B4A00D8C1F1 /* UIAlertView+AFNetworking.m in Sources */,
 				855BBAD41C390B4A00D8C1F1 /* AFHTTPRequestOperationManager.m in Sources */,
+				D8995A8C1C6370B90042A0CD /* ZLBClassContentVideo.m in Sources */,
 				85E62CD01C37D80F003421CC /* ABSMovieDecoder.m in Sources */,
 				855BBAF11C390B4A00D8C1F1 /* UIImage+MultiFormat.m in Sources */,
 				855BBB5D1C390B7E00D8C1F1 /* MJDIYBackFooter.m in Sources */,

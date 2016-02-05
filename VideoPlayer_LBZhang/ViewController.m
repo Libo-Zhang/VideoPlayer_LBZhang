@@ -12,14 +12,21 @@
 #define TOPVIEW_HEIGHT 64
 #define RIGHT_WIDTH 50
 #define ROTATOR_BOTTOM_HEIGHT 50
-#define VERTICAL_BOTTOM_HEIGHT 90
+#define VERTICAL_BOTTOM_HEIGHT 80
 #define ZERO 0
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define PLAYVIEW_WIDTH [UIScreen mainScreen].bounds.size.width
+#define PLAYVIEW_HEIGHT self.playVC.bounds.size.height
+
+//#define PLAYVIEW_HEIGHT
 @interface ViewController ()<UIGestureRecognizerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *playVC;
+
 //view
 @property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet UIView *rightView;
+//@property (weak, nonatomic) IBOutlet UIView *rightView;
 
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
 
@@ -53,7 +60,8 @@
     if (!_player) {
         if (self.movieURL) {
             AVPlayerItem *item = [AVPlayerItem playerItemWithURL:self.movieURL];
-            self.player = [AVPlayer playerWithPlayerItem:item];
+            _player = [AVPlayer playerWithPlayerItem:item];
+            _player.volume = 0.5;
             //  添加进度观察
             [self addProgressObserver];
             [self addObserverToPlayerItem:item];
@@ -70,8 +78,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //5540385469401b10912f7a24-6
-    self.movieURL = [[NSBundle mainBundle] URLForResource:@"mv" withExtension:@".mp4"];
-    self.view.backgroundColor = [UIColor blackColor];
+   // self.movieURL = [[NSBundle mainBundle] URLForResource:@"mv" withExtension:@".mp4"];
+    self.view.backgroundColor = [UIColor blueColor];
     
     //播放页面添加轻拍手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissAllSubViews:)];
@@ -80,13 +88,13 @@
     
     [self addNotificationCenters];
     
-    //创建显示层
-    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    [self setPlayerLayerFrame];
-    //这是视频的填充模式,默认为 AVLayerVideoGravityResizeAspect
-    _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    //插到 view 层上面,没有用 addSubLayer
-    [self.view.layer insertSublayer:_playerLayer atIndex:0];
+//    //创建显示层
+//    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+//    [self setPlayerLayerFrame];
+//    //这是视频的填充模式,默认为 AVLayerVideoGravityResizeAspect
+//    _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//    //插到 view 层上面,没有用 addSubLayer
+//    [self.playVC.layer insertSublayer:_playerLayer atIndex:0];
 
     
     
@@ -123,19 +131,23 @@
 }
 -(void)setTopRightBottmFrame{
     __weak typeof (self) myself = self;
-    if (!self.isFirstTap) {
+    if (!self.isFirstTap) {//第一次点击,那些内容还在
         [UIView animateWithDuration:.2f animations:^{
             myself.topView.frame = CGRectMake(myself.topView.frame.origin.x, -TOPVIEW_HEIGHT, myself.topView.frame.size.width, myself.topView.frame.size.height);
-            myself.rightView.frame = CGRectMake(SCREEN_WIDTH, myself.rightView.frame.origin.y, myself.rightView.frame.size.width, myself.rightView.frame.size.height);
-            myself.buttomView.frame = CGRectMake(myself.buttomView.frame.origin.x, SCREEN_HEIGHT, myself.buttomView.frame.size.width, myself.buttomView.frame.size.height);
+            //myself.rightView.frame = CGRectMake(SCREEN_WIDTH, myself.rightView.frame.origin.y, myself.rightView.frame.size.width, myself.rightView.frame.size.height);
+            myself.buttomView.frame = CGRectMake(myself.buttomView.frame.origin.x, PLAYVIEW_HEIGHT, myself.buttomView.frame.size.width, myself.buttomView.frame.size.height);
+            myself.topView.hidden = YES;
+            myself.buttomView.hidden = YES;
          
         }];
         self.isFirstTap = YES;
-    } else {
+    } else {//非第一次点击,内容已经隐藏了
         [UIView animateWithDuration:.2f animations:^{
             myself.topView.frame = CGRectMake(myself.topView.frame.origin.x, ZERO, myself.topView.frame.size.width, myself.topView.frame.size.height);
-            myself.rightView.frame = CGRectMake(SCREEN_WIDTH - RIGHT_WIDTH, myself.rightView.frame.origin.y, myself.rightView.frame.size.width, myself.rightView.frame.size.height);
-            myself.buttomView.frame = CGRectMake(myself.buttomView.frame.origin.x, SCREEN_HEIGHT - VERTICAL_BOTTOM_HEIGHT, myself.buttomView.frame.size.width, myself.buttomView.frame.size.height);
+           // myself.rightView.frame = CGRectMake(SCREEN_WIDTH - RIGHT_WIDTH, myself.rightView.frame.origin.y, myself.rightView.frame.size.width, myself.rightView.frame.size.height);
+            myself.buttomView.frame = CGRectMake(myself.buttomView.frame.origin.x, PLAYVIEW_HEIGHT - VERTICAL_BOTTOM_HEIGHT, myself.buttomView.frame.size.width, myself.buttomView.frame.size.height);
+            myself.topView.hidden = NO;
+            myself.buttomView.hidden = NO;
            
         }];
         self.isFirstTap = NO;
@@ -175,16 +187,17 @@
     }];
     
 }
+//从隐藏到显示
 - (void)setTopRightBottomViewHiddenToShow {
     _topView.hidden = NO;
-    _rightView.hidden = NO;
+    //_rightView.hidden = NO;
     _buttomView.hidden = NO;
     _isFirstTap = NO;
 }
-
+//从显示到隐藏
 - (void)setTopRightBottomViewShowToHidden {
     _topView.hidden = YES;
-    _rightView.hidden = YES;
+    //_rightView.hidden = YES;
     _buttomView.hidden = YES;
     _isFirstTap = YES;
 }
@@ -242,12 +255,20 @@
     CGRect frame = self.view.bounds;
     frame.origin.x = ZERO;
     frame.origin.y = ZERO;
-    frame.size.width = SCREEN_WIDTH;
-    frame.size.height = SCREEN_HEIGHT;
+    frame.size.width = PLAYVIEW_WIDTH;
+    frame.size.height = PLAYVIEW_HEIGHT;
     _playerLayer.frame = frame;
 }
 #pragma mark Play
 - (IBAction)playMovie:(id)sender {
+    //创建显示层
+    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    [self setPlayerLayerFrame];
+    //这是视频的填充模式,默认为 AVLayerVideoGravityResizeAspect
+    _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    //插到 view 层上面,没有用 addSubLayer
+    [self.playVC.layer insertSublayer:_playerLayer atIndex:0];
+    
     [self setPlayOrParse];
 }
 - (void)didReceiveMemoryWarning {
@@ -258,7 +279,7 @@
 #pragma mark - UIGestureRecognizerDelegate Method 方法
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     //  不让子视图响应点击事件
-    if( CGRectContainsPoint(self.topView.frame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(self.rightView.frame, [gestureRecognizer locationInView:self.view]) ||CGRectContainsPoint(self.buttomView.frame, [gestureRecognizer locationInView:self.view])) {
+    if( CGRectContainsPoint(self.topView.frame, [gestureRecognizer locationInView:self.view]) ||CGRectContainsPoint(self.buttomView.frame, [gestureRecognizer locationInView:self.view])) {
         return NO;
     } else{
         return YES;
@@ -318,7 +339,13 @@
         }
     }];
     
+}
+- (IBAction)changeVolumeAction:(UISlider *)sender {
+    self.player.volume = sender.value;
     
+    
+}
+- (IBAction)complementAction:(UIButton *)sender {
 }
 
 @end
