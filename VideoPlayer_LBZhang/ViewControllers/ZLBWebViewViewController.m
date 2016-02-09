@@ -17,6 +17,7 @@
 @end
 
 @implementation ZLBWebViewViewController
+
 //WKWebView的懒加载
 -(WKWebView *)webView{
     if (!_webView) {
@@ -33,7 +34,12 @@
     [super viewDidLoad];
     self.webView.hidden = NO;
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = item;
     // Do any additional setup after loading the view.
+}
+-(void)backAction{
+    
 }
 
 - (void)didReceiveMemoryWarning {

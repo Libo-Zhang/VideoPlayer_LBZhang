@@ -81,14 +81,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81S-zl-GVn" userLabel="Buttom">
                                 <rect key="frame" x="0.0" y="510" width="600" height="90"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIn-1g-Eo7">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIn-1g-Eo7">
                                         <rect key="frame" x="275" y="0.0" width="50" height="50"/>
                                         <state key="normal" image="播放器_播放.png"/>
                                         <connections>
                                             <action selector="playMovie:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qh4-nb-pJ6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fi-kb-qVh">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fi-kb-qVh">
                                         <rect key="frame" x="325" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="0FN-8V-Rby"/>
@@ -107,7 +107,7 @@
                                             <action selector="changeVolumeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="nK0-lp-nXe"/>
                                         </connections>
                                     </slider>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lj-cE-4vq">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lj-cE-4vq">
                                         <rect key="frame" x="235" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="A5c-Rn-JQI"/>
@@ -397,7 +397,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JN3-x3-Uqq">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Vlp-m3-Q2G" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Vlp-m3-Q2G" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Pvj-qV-98A">
                         <autoresizingMask key="autoresizingMask"/>

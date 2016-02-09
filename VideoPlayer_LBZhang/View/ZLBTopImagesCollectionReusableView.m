@@ -86,6 +86,9 @@
         ZLBWebViewViewController *webVC = [ZLBWebViewViewController new];
         NSURL *url = [NSURL URLWithString:vos.contentUrl];
         webVC.url = url;
+        NSMutableDictionary *mudic = [NSMutableDictionary dictionary];
+        mudic[@"webVC"] = webVC;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"topImageViewTap" object:nil userInfo:mudic];
       //  [self.navigationController pushViewController:webVC animated:YES];
     }
 

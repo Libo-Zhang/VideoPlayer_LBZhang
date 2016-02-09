@@ -41,8 +41,16 @@
 }
 -(void)observer:(NSNotification*) notification{
     NSDictionary *dic = notification.userInfo;
-    id vc = dic[@"vc"];
-    [self presentViewController:vc animated:YES completion:nil];
+    if ([dic objectForKey:@"vc"]) {
+        id vc = dic[@"vc"];
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    if ([dic objectForKey:@"webVC"]) {
+        id vc = dic[@"webVC"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
 }
 //移除通知
 -(void)removeObservers{
