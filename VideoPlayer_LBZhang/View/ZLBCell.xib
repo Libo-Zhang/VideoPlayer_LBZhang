@@ -8,19 +8,19 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Course" id="gTV-IL-0wX" customClass="ZLBCell">
-            <rect key="frame" x="0.0" y="0.0" width="225" height="156"/>
+            <rect key="frame" x="0.0" y="0.0" width="225" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="225" height="156"/>
+                <rect key="frame" x="0.0" y="0.0" width="225" height="200"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="c" translatesAutoresizingMaskIntoConstraints="NO" id="keN-xQ-1qy">
-                        <rect key="frame" x="0.0" y="0.0" width="218" height="106"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c" translatesAutoresizingMaskIntoConstraints="NO" id="keN-xQ-1qy">
+                        <rect key="frame" x="0.0" y="0.0" width="225" height="150"/>
                     </imageView>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqL-5a-8Ty">
-                        <rect key="frame" x="0.0" y="106" width="218" height="50"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqL-5a-8Ty">
+                        <rect key="frame" x="0.0" y="150" width="225" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="谁是生存规则的定制者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id1-lS-5lU">
-                                <rect key="frame" x="0.0" y="7" width="218" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谁是生存规则的定制者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id1-lS-5lU">
+                                <rect key="frame" x="0.0" y="7" width="225" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="20c-1q-Mx2"/>
                                 </constraints>
@@ -28,8 +28,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU2-Xy-VdM">
-                                <rect key="frame" x="0.0" y="27" width="218" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU2-Xy-VdM">
+                                <rect key="frame" x="0.0" y="27" width="225" height="18.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="阿米尔汗">
                                         <attributes>
@@ -66,8 +66,9 @@
                             <constraint firstAttribute="trailing" secondItem="TU2-Xy-VdM" secondAttribute="trailing" id="zDO-0F-KwP"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="聚焦当代印度社会的制定者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4r-bf-n8p">
-                        <rect key="frame" x="10" y="89" width="208" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   聚焦当代印度社会的制定者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4r-bf-n8p">
+                        <rect key="frame" x="0.0" y="133" width="225" height="17"/>
+                        <color key="backgroundColor" red="0.057261906564235687" green="0.11094693094491959" blue="0.031601410359144211" alpha="0.61042564655172415" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -80,7 +81,7 @@
                 <constraint firstItem="sqL-5a-8Ty" firstAttribute="top" secondItem="keN-xQ-1qy" secondAttribute="bottom" id="7dW-jK-Ltt"/>
                 <constraint firstItem="keN-xQ-1qy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NA7-El-1pS"/>
                 <constraint firstAttribute="trailing" secondItem="sqL-5a-8Ty" secondAttribute="trailing" id="Seb-jL-YGG"/>
-                <constraint firstItem="v4r-bf-n8p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="avK-06-qhA"/>
+                <constraint firstItem="v4r-bf-n8p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="avK-06-qhA"/>
                 <constraint firstAttribute="trailing" secondItem="v4r-bf-n8p" secondAttribute="trailing" id="dVO-Gd-Fne"/>
                 <constraint firstAttribute="bottom" secondItem="keN-xQ-1qy" secondAttribute="bottom" constant="50" id="daA-DQ-ljY"/>
                 <constraint firstItem="keN-xQ-1qy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fgX-ut-9gE"/>

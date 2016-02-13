@@ -14,16 +14,16 @@
 #define ROTATOR_BOTTOM_HEIGHT 50
 #define VERTICAL_BOTTOM_HEIGHT 80
 #define ZERO 0
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
 #define PLAYVIEW_WIDTH [UIScreen mainScreen].bounds.size.width
-#define PLAYVIEW_HEIGHT self.playVC.bounds.size.height
+#define PLAYVIEW_HEIGHT self.playViewHeight
 
 //#define PLAYVIEW_HEIGHT
 @interface ViewController ()<UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *playVC;
 
+@property (strong, nonatomic) IBOutlet UIView *firstView;
 //view
 @property (weak, nonatomic) IBOutlet UIView *topView;
 //@property (weak, nonatomic) IBOutlet UIView *rightView;
@@ -34,23 +34,25 @@
 @property (weak, nonatomic) IBOutlet UILabel *topPastTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *topProgressSlider;
 @property (weak, nonatomic) IBOutlet UILabel *topRemainLable;
-
+@property (weak, nonatomic) IBOutlet UIButton *complemetionBtn;
 //bottomView 中的
 @property (weak, nonatomic) IBOutlet UISlider *bottomSlider;
-
-
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
+//用来保存竖屏是View的高度.
+@property (nonatomic, assign) float playViewHeight;
 
-//第一次点击
+//点击
 @property (nonatomic, assign) BOOL isFirstTap;
+//第一次播放
+@property (nonatomic, assign) BOOL isFirstPlay;
 //AVPlayer
 @property (nonatomic, strong)AVPlayer *player;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
 @property (nonatomic, assign) BOOL isPlayOrParse;
 //  保存该视频资源的总时长，快进或快退的时候要用
 @property (nonatomic, assign) CGFloat totalMovieDuration;
-
+@property (nonatomic, strong) id playbackObserver;
 @end
 
 @implementation ViewController
@@ -61,43 +63,53 @@
         if (self.movieURL) {
             AVPlayerItem *item = [AVPlayerItem playerItemWithURL:self.movieURL];
             _player = [AVPlayer playerWithPlayerItem:item];
+            //音量
             _player.volume = 0.5;
-            //  添加进度观察
-            [self addProgressObserver];
-            [self addObserverToPlayerItem:item];
+          
         }
     }
     return _player;
 }
 - (void)dealloc {
-    //  移除观察者,使用观察者模式的时候,记得在不使用的时候,进行移除
+    NSLog(@"dealloc");
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //  添加进度观察
+    [self addProgressObserver];
+    [self addObserverToPlayerItem:self.player.currentItem];
+    [self addNotificationCenters];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    //当退出播放界面时,销毁对象
+    //这个remove 是对应的addProgressObserver中的 addPeriodicTimeObserverForInterval 比较特殊.
+    [self.player removeTimeObserver:self.playbackObserver];
+    //移除playItem上的观察者(销毁对象)
     [self removeObserverFromPlayerItem:self.player.currentItem];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+    [self.player.currentItem cancelPendingSeeks];
+    [self.player.currentItem.asset cancelLoading];
+    [self.player replaceCurrentItemWithPlayerItem:nil];
+    self.player = nil;
+    //移除观察者
+    [self removeNotificationCenters];
+  
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //隐藏但是不消失  点击无效
+    self.navigationController.navigationBarHidden = YES;
+    //初始化 没有播放过 就是NO
+    self.isFirstPlay = NO;
+    self.playViewHeight = self.playVC.bounds.size.height;
     //5540385469401b10912f7a24-6
    // self.movieURL = [[NSBundle mainBundle] URLForResource:@"mv" withExtension:@".mp4"];
-    self.view.backgroundColor = [UIColor blueColor];
+    //self.view.backgroundColor = [UIColor whiteColor];
+    self.firstView.backgroundColor = [UIColor whiteColor];
     
     //播放页面添加轻拍手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissAllSubViews:)];
-    [self.view addGestureRecognizer:tap];
-    tap.delegate =self;
-    
-    [self addNotificationCenters];
-    
-//    //创建显示层
-//    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-//    [self setPlayerLayerFrame];
-//    //这是视频的填充模式,默认为 AVLayerVideoGravityResizeAspect
-//    _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//    //插到 view 层上面,没有用 addSubLayer
-//    [self.playVC.layer insertSublayer:_playerLayer atIndex:0];
-
-    
-    
+    [self.playVC addGestureRecognizer:tap];
+    tap.delegate = self;
 }
 - (void)addNotificationCenters {
     //  注册观察者用来观察，是否播放完毕
@@ -105,23 +117,40 @@
     //  注册观察者来观察屏幕的旋转
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarOrientationChange:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 }
-
+-(void)removeNotificationCenters{
+    //  移除观察者,使用观察者模式的时候,记得在不使用的时候,进行移除
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+}
+#pragma mark 是否横屏
+//  观察UIApplicationDidChangeStatusBarOrientationNotification这个属性
 - (void)statusBarOrientationChange:(NSNotification *)notification {
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if (orientation == UIInterfaceOrientationLandscapeRight) {
-        [self setPlayerLayerFrame];
+//    if (self.isFirstPlay == NO) {//如果没有播放  播放的时候才允许横竖屏
+//        return;
+//    }
+    if (orientation == UIInterfaceOrientationLandscapeRight) {//往右转 横屏
+         //self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        //   设置Layer的frame  全屏
+        [self setPlayerLayerFrame2];
+        //  设置第一次点击  控制栏会出现
         self.isFirstTap = YES;
-        [self setTopRightBottmFrame];
+        //返回按钮隐藏  横屏状态下不让返回
+        self.complemetionBtn.hidden = YES;
     }
-    if (orientation == UIInterfaceOrientationLandscapeLeft) {
-        [self setPlayerLayerFrame];
+    if (orientation == UIInterfaceOrientationLandscapeLeft) {//横屏
+       // self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        [self setPlayerLayerFrame2];
         self.isFirstTap = YES;
-         [self setTopRightBottmFrame];
+         self.complemetionBtn.hidden = YES;
     }
-    if (orientation == UIInterfaceOrientationPortrait) {
+    if (orientation == UIInterfaceOrientationPortrait) {//竖屏
+        //设置Layer的frame 跟原先的一样
         [self setPlayerLayerFrame];
+        //设置第一次点击  控制栏会出现
         self.isFirstTap = YES;
-         [self setTopRightBottmFrame];
+        //返回按钮显示
+         self.complemetionBtn.hidden = NO;
     }
     
 }
@@ -129,38 +158,31 @@
 -(void)dismissAllSubViews:(UITapGestureRecognizer *)tap{
     [self setTopRightBottmFrame];
 }
+//竖屏
 -(void)setTopRightBottmFrame{
     __weak typeof (self) myself = self;
     if (!self.isFirstTap) {//第一次点击,那些内容还在
         [UIView animateWithDuration:.2f animations:^{
-            myself.topView.frame = CGRectMake(myself.topView.frame.origin.x, -TOPVIEW_HEIGHT, myself.topView.frame.size.width, myself.topView.frame.size.height);
-            //myself.rightView.frame = CGRectMake(SCREEN_WIDTH, myself.rightView.frame.origin.y, myself.rightView.frame.size.width, myself.rightView.frame.size.height);
-            myself.buttomView.frame = CGRectMake(myself.buttomView.frame.origin.x, PLAYVIEW_HEIGHT, myself.buttomView.frame.size.width, myself.buttomView.frame.size.height);
             myself.topView.hidden = YES;
             myself.buttomView.hidden = YES;
-         
         }];
         self.isFirstTap = YES;
     } else {//非第一次点击,内容已经隐藏了
         [UIView animateWithDuration:.2f animations:^{
-            myself.topView.frame = CGRectMake(myself.topView.frame.origin.x, ZERO, myself.topView.frame.size.width, myself.topView.frame.size.height);
-           // myself.rightView.frame = CGRectMake(SCREEN_WIDTH - RIGHT_WIDTH, myself.rightView.frame.origin.y, myself.rightView.frame.size.width, myself.rightView.frame.size.height);
-            myself.buttomView.frame = CGRectMake(myself.buttomView.frame.origin.x, PLAYVIEW_HEIGHT - VERTICAL_BOTTOM_HEIGHT, myself.buttomView.frame.size.width, myself.buttomView.frame.size.height);
             myself.topView.hidden = NO;
             myself.buttomView.hidden = NO;
-           
         }];
         self.isFirstTap = NO;
     }
-
 }
 #pragma mark - 更新播放进度
 //      依靠AVPlayer的- (id)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block方法获得播放进度，这个方法会在设定的时间间隔内定时更新播放进度，通过time参数通知客户端。相信有了这些视频信息播放进度就不成问题了，事实上通过这些信息就算是平时看到的其他播放器的缓冲进度显示以及拖动播放的功能也可以顺利的实现。
 -(void)addProgressObserver{
-    AVPlayerItem *playerItem = self.player.currentItem;
+  
     __weak typeof(self) myself = self;
+      AVPlayerItem *playerItem = myself.player.currentItem;
     //设置每秒执行一次
-    [myself.player addPeriodicTimeObserverForInterval:CMTimeMake(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+    self.playbackObserver =  [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         //获取当前进度
         float current = CMTimeGetSeconds(time);
         //获取全部资源的大小
@@ -173,17 +195,15 @@
             float remainSeconds = total - current;
             NSDate *remainDate = [NSDate dateWithTimeIntervalSince1970:remainSeconds];
             //这句不加   就不会隐藏  因为每秒都会因为 label  而显示 view
-            if (_isFirstTap) {
-                [self setTopRightBottomViewShowToHidden];
+            if (myself.isFirstTap) {
+                //注意在block中 小心循环引用
+                [myself setTopRightBottomViewShowToHidden];
             } else {
-                [self setTopRightBottomViewHiddenToShow];
+                [myself setTopRightBottomViewHiddenToShow];
             }
             myself.topPastTimeLabel.text = [myself getTimeByDate:d byProgress:current];
             myself.topRemainLable.text = [myself getTimeByDate:remainDate byProgress:remainSeconds];
-            
         }
-        
-        
     }];
     
 }
@@ -250,27 +270,51 @@
         NSLog(@"共缓冲%.2f", totalBuffer);
     }
 }
+
 //设置 layer 的 frame
+//竖屏
 - (void)setPlayerLayerFrame {
     CGRect frame = self.view.bounds;
     frame.origin.x = ZERO;
     frame.origin.y = ZERO;
     frame.size.width = PLAYVIEW_WIDTH;
-    frame.size.height = PLAYVIEW_HEIGHT;
+    frame.size.height = self.playViewHeight;
+    // _playVC.frame = frame;
     _playerLayer.frame = frame;
+}
+//横屏
+-(void)setPlayerLayerFrame2{
+    CGRect frame = self.view.bounds;
+    frame.origin.x = ZERO;
+    frame.origin.y = ZERO;
+    frame.size.width = SCREEN_WIDTH;
+    frame.size.height = SCREEN_HEIGHT;
+    //_playVC.frame = frame;
+    _playerLayer.frame = frame;
+   // NSLog(@"%f,%f",self.playVC.frame.size.width,self.playVC.frame.size.height);
 }
 #pragma mark Play
 - (IBAction)playMovie:(id)sender {
+    
+    
     //创建显示层
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    [self setPlayerLayerFrame];
-    //这是视频的填充模式,默认为 AVLayerVideoGravityResizeAspect
-    _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    //插到 view 层上面,没有用 addSubLayer
-    [self.playVC.layer insertSublayer:_playerLayer atIndex:0];
-    
-    [self setPlayOrParse];
+    //设置layer 第一次播放时设置就够了, 其余不用设置
+    if (self.isFirstPlay == NO) {
+        [self setPlayerLayerFrame];
+        //这是视频的填充模式,默认为 AVLayerVideoGravityResizeAspect
+        _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        //插到 view 层上面,没有用 addSubLayer
+        [self.playVC.layer insertSublayer:_playerLayer atIndex:0];
+      
+    }
+      [self setPlayOrParse];
+   
+    //播放过了这个属性就赋值为YES
+    self.isFirstPlay = YES;
 }
+
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -296,10 +340,10 @@
 }
 #pragma mark 播放或暂停
 - (void)setPlayOrParse {
-    if(!self.isPlayOrParse) {
+    if(!self.isPlayOrParse) {//点击之后播放 isPlayOrParse = YES 表示正在播放
         [self setMoviePlay];
         self.isPlayOrParse = YES;
-    } else {
+    } else {//点击之后暂停
         [self setMovieParse];
         self.isPlayOrParse = NO;
     }
@@ -342,10 +386,9 @@
 }
 - (IBAction)changeVolumeAction:(UISlider *)sender {
     self.player.volume = sender.value;
-    
-    
 }
 - (IBAction)complementAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -1,0 +1,21 @@
+//
+//  ZLBPrefixHeader.pch
+//  VideoPlayer_LBZhang
+//
+//  Created by LB_Zhang on 16/2/13.
+//  Copyright © 2016年 tarena. All rights reserved.
+//
+
+#ifndef ZLBPrefixHeader_pch
+#define ZLBPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#define topImageViewHeight  (round([UIScreen mainScreen].bounds.size.height * 0.34))
+//因为导航栏和滚动视图 一起用会 有这个bug 多出64  ,减掉即可.
+#define topImageViewHeight2 (round([UIScreen mainScreen].bounds.size.height * 0.34))
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+#define LAYOUT_WIDTH (round([UIScreen mainScreen].bounds.size.width * 0.42))
+#define LAYOUT_HEIGHT (200)
+#endif /* ZLBPrefixHeader_pch */

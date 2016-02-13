@@ -13,10 +13,13 @@
 //返回的数组是解析好的ZLBCategory
 +(NSArray *)parseNSArray:(NSArray *)arraylist{
 
+    //定义一个可变数组
     NSMutableArray *Arr = [NSMutableArray array];
     for (NSDictionary *dic in arraylist) {
         ZLBCategory *cate = [ZLBCategory new];
+        //系统化自带的将字典转换为模型类的方法 用到了KVC
         [cate setValuesForKeysWithDictionary:dic];
+        //可变数组添加
         [Arr addObject:cate];
     }
     return [Arr copy];

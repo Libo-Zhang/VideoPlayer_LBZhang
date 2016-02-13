@@ -24,12 +24,13 @@
         _webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
         [self.view addSubview:_webView];
         _webView.allowsBackForwardNavigationGestures = YES;
-     
-       
     }
     return _webView;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.webView.hidden = NO;
@@ -39,7 +40,7 @@
     // Do any additional setup after loading the view.
 }
 -(void)backAction{
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,14 +48,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

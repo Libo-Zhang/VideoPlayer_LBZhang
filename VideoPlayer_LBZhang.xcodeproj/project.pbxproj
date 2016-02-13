@@ -123,9 +123,15 @@
 		85CAC1401C35522E002897DB /* video.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 85CAC13F1C35522E002897DB /* video.bundle */; };
 		85E62CD01C37D80F003421CC /* ABSMovieDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E62CCF1C37D80F003421CC /* ABSMovieDecoder.m */; };
 		85F72A2F1C3A8A3D00C67D09 /* ZLBYUV.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F72A2E1C3A8A3D00C67D09 /* ZLBYUV.m */; };
-		85F72A351C3A8C2E00C67D09 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F72A341C3A8C2E00C67D09 /* TestViewController.m */; };
 		85F72A3C1C3AA03200C67D09 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F72A3B1C3AA03200C67D09 /* OpenGLES.framework */; };
 		85F72A3E1C3AA03C00C67D09 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F72A3D1C3AA03C00C67D09 /* QuartzCore.framework */; };
+		D8009D851C6F070600DE75A7 /* judgeDevices.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D841C6F070600DE75A7 /* judgeDevices.m */; };
+		D8009D8D1C6F77F100DE75A7 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D881C6F77F100DE75A7 /* RECommonFunctions.m */; };
+		D8009D8E1C6F77F100DE75A7 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D8A1C6F77F100DE75A7 /* RESideMenu.m */; };
+		D8009D8F1C6F77F100DE75A7 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D8C1C6F77F100DE75A7 /* UIViewController+RESideMenu.m */; };
+		D8009D921C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D911C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.m */; };
+		D8009D951C6F7AB200DE75A7 /* RESideLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D941C6F7AB200DE75A7 /* RESideLeftViewController.m */; };
+		D8009D981C6F80B800DE75A7 /* ZLBNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D971C6F80B800DE75A7 /* ZLBNavController.m */; };
 		D8995A891C636D7D0042A0CD /* ZLBContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A881C636D7D0042A0CD /* ZLBContent.m */; };
 		D8995A8C1C6370B90042A0CD /* ZLBClassContentVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A8B1C6370B90042A0CD /* ZLBClassContentVideo.m */; };
 		D8995A921C64D5660042A0CD /* ZLBWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A911C64D5660042A0CD /* ZLBWebViewViewController.m */; };
@@ -329,10 +335,23 @@
 		85E62CCF1C37D80F003421CC /* ABSMovieDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABSMovieDecoder.m; path = ../ABSMovieDecoder.m; sourceTree = "<group>"; };
 		85F72A2D1C3A8A3D00C67D09 /* ZLBYUV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBYUV.h; sourceTree = "<group>"; };
 		85F72A2E1C3A8A3D00C67D09 /* ZLBYUV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBYUV.m; sourceTree = "<group>"; };
-		85F72A331C3A8C2E00C67D09 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		85F72A341C3A8C2E00C67D09 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		85F72A3B1C3AA03200C67D09 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		85F72A3D1C3AA03C00C67D09 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D8009D811C6EFA9C00DE75A7 /* ZLBPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBPrefixHeader.pch; sourceTree = "<group>"; };
+		D8009D831C6F070600DE75A7 /* judgeDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = judgeDevices.h; sourceTree = "<group>"; };
+		D8009D841C6F070600DE75A7 /* judgeDevices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = judgeDevices.m; sourceTree = "<group>"; };
+		D8009D871C6F77F100DE75A7 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		D8009D881C6F77F100DE75A7 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		D8009D891C6F77F100DE75A7 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		D8009D8A1C6F77F100DE75A7 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		D8009D8B1C6F77F100DE75A7 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		D8009D8C1C6F77F100DE75A7 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		D8009D901C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenuRootViewContoller.h; sourceTree = "<group>"; };
+		D8009D911C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenuRootViewContoller.m; sourceTree = "<group>"; };
+		D8009D931C6F7AB200DE75A7 /* RESideLeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideLeftViewController.h; sourceTree = "<group>"; };
+		D8009D941C6F7AB200DE75A7 /* RESideLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideLeftViewController.m; sourceTree = "<group>"; };
+		D8009D961C6F80B800DE75A7 /* ZLBNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBNavController.h; sourceTree = "<group>"; };
+		D8009D971C6F80B800DE75A7 /* ZLBNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBNavController.m; sourceTree = "<group>"; };
 		D8995A871C636D7D0042A0CD /* ZLBContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBContent.h; sourceTree = "<group>"; };
 		D8995A881C636D7D0042A0CD /* ZLBContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBContent.m; sourceTree = "<group>"; };
 		D8995A8A1C6370B90042A0CD /* ZLBClassContentVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBClassContentVideo.h; sourceTree = "<group>"; };
@@ -361,6 +380,7 @@
 			children = (
 				D8995A931C64E0560042A0CD /* MBProgressHUD.h */,
 				D8995A941C64E0560042A0CD /* MBProgressHUD.m */,
+				D8009D861C6F77F100DE75A7 /* RESideMenu */,
 				855BBB4C1C390B7E00D8C1F1 /* DIY */,
 				855BBB0C1C390B7100D8C1F1 /* MJRefresh */,
 				855BBA681C390B4900D8C1F1 /* AFNetworking */,
@@ -376,6 +396,8 @@
 			children = (
 				855BBB621C39152100D8C1F1 /* ZLBDataManager.h */,
 				855BBB631C39152100D8C1F1 /* ZLBDataManager.m */,
+				D8009D831C6F070600DE75A7 /* judgeDevices.h */,
+				D8009D841C6F070600DE75A7 /* judgeDevices.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -399,10 +421,14 @@
 				85CAC10F1C35502D002897DB /* ViewController.m */,
 				855BBA591C38FA8600D8C1F1 /* ZLBMainViewController.h */,
 				855BBA5A1C38FA8600D8C1F1 /* ZLBMainViewController.m */,
-				85F72A331C3A8C2E00C67D09 /* TestViewController.h */,
-				85F72A341C3A8C2E00C67D09 /* TestViewController.m */,
 				D8995A901C64D5660042A0CD /* ZLBWebViewViewController.h */,
 				D8995A911C64D5660042A0CD /* ZLBWebViewViewController.m */,
+				D8009D901C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.h */,
+				D8009D911C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.m */,
+				D8009D931C6F7AB200DE75A7 /* RESideLeftViewController.h */,
+				D8009D941C6F7AB200DE75A7 /* RESideLeftViewController.m */,
+				D8009D961C6F80B800DE75A7 /* ZLBNavController.h */,
+				D8009D971C6F80B800DE75A7 /* ZLBNavController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -723,6 +749,7 @@
 				85CAC1141C35502D002897DB /* Assets.xcassets */,
 				85CAC1161C35502D002897DB /* LaunchScreen.storyboard */,
 				85CAC1191C35502D002897DB /* Info.plist */,
+				D8009D811C6EFA9C00DE75A7 /* ZLBPrefixHeader.pch */,
 				85CAC1081C35502D002897DB /* Supporting Files */,
 			);
 			path = VideoPlayer_LBZhang;
@@ -760,6 +787,19 @@
 				85CAC12E1C355091002897DB /* 缓存_选中.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D8009D861C6F77F100DE75A7 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D8009D871C6F77F100DE75A7 /* RECommonFunctions.h */,
+				D8009D881C6F77F100DE75A7 /* RECommonFunctions.m */,
+				D8009D891C6F77F100DE75A7 /* RESideMenu.h */,
+				D8009D8A1C6F77F100DE75A7 /* RESideMenu.m */,
+				D8009D8B1C6F77F100DE75A7 /* UIViewController+RESideMenu.h */,
+				D8009D8C1C6F77F100DE75A7 /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -872,8 +912,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8009D951C6F7AB200DE75A7 /* RESideLeftViewController.m in Sources */,
 				855BBAF51C390B4A00D8C1F1 /* UIView+WebCacheOperation.m in Sources */,
 				855BBB091C390B4A00D8C1F1 /* TSBlurView.m in Sources */,
+				D8009D8F1C6F77F100DE75A7 /* UIViewController+RESideMenu.m in Sources */,
 				855BBB0A1C390B4A00D8C1F1 /* TSMessage.m in Sources */,
 				855BBADB1C390B4A00D8C1F1 /* AFURLSessionManager.m in Sources */,
 				855BBB591C390B7E00D8C1F1 /* MJChiBaoZiFooter.m in Sources */,
@@ -891,6 +933,7 @@
 				855BBB411C390B7100D8C1F1 /* MJRefreshBackGifFooter.m in Sources */,
 				855BBB401C390B7100D8C1F1 /* MJRefreshAutoStateFooter.m in Sources */,
 				855BBB5B1C390B7E00D8C1F1 /* MJChiBaoZiHeader.m in Sources */,
+				D8009D8D1C6F77F100DE75A7 /* RECommonFunctions.m in Sources */,
 				855BBAE11C390B4A00D8C1F1 /* UIProgressView+AFNetworking.m in Sources */,
 				855BBAD31C390B4A00D8C1F1 /* AFHTTPRequestOperation.m in Sources */,
 				855BBAE51C390B4A00D8C1F1 /* UIImageView+LBBlurredImage.m in Sources */,
@@ -901,11 +944,12 @@
 				855BBADE1C390B4A00D8C1F1 /* UIAlertView+AFNetworking.m in Sources */,
 				855BBAD41C390B4A00D8C1F1 /* AFHTTPRequestOperationManager.m in Sources */,
 				D8995A8C1C6370B90042A0CD /* ZLBClassContentVideo.m in Sources */,
+				D8009D8E1C6F77F100DE75A7 /* RESideMenu.m in Sources */,
 				85E62CD01C37D80F003421CC /* ABSMovieDecoder.m in Sources */,
 				855BBAF11C390B4A00D8C1F1 /* UIImage+MultiFormat.m in Sources */,
+				D8009D921C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.m in Sources */,
 				855BBB5D1C390B7E00D8C1F1 /* MJDIYBackFooter.m in Sources */,
 				855BBB421C390B7100D8C1F1 /* MJRefreshBackNormalFooter.m in Sources */,
-				85F72A351C3A8C2E00C67D09 /* TestViewController.m in Sources */,
 				855BBAE01C390B4A00D8C1F1 /* UIImageView+AFNetworking.m in Sources */,
 				855BBAEF1C390B4A00D8C1F1 /* UIButton+WebCache.m in Sources */,
 				855BBAF01C390B4A00D8C1F1 /* UIImage+GIF.m in Sources */,
@@ -931,6 +975,7 @@
 				855BBAF41C390B4A00D8C1F1 /* UIImageView+WebCache.m in Sources */,
 				855BBB0B1C390B4A00D8C1F1 /* TSMessageView.m in Sources */,
 				855BBAEB1C390B4A00D8C1F1 /* SDWebImageDownloader.m in Sources */,
+				D8009D851C6F070600DE75A7 /* judgeDevices.m in Sources */,
 				855BBB5C1C390B7E00D8C1F1 /* MJDIYAutoFooter.m in Sources */,
 				855BBB3F1C390B7100D8C1F1 /* MJRefreshAutoNormalFooter.m in Sources */,
 				855BBB3C1C390B7100D8C1F1 /* MJRefreshFooter.m in Sources */,
@@ -938,6 +983,7 @@
 				855BBB481C390B7100D8C1F1 /* MJRefreshConst.m in Sources */,
 				855BBAE61C390B4A00D8C1F1 /* MKAnnotationView+WebCache.m in Sources */,
 				855BBADA1C390B4A00D8C1F1 /* AFURLResponseSerialization.m in Sources */,
+				D8009D981C6F80B800DE75A7 /* ZLBNavController.m in Sources */,
 				855BBB441C390B7100D8C1F1 /* MJRefreshGifHeader.m in Sources */,
 				855BBB641C39152100D8C1F1 /* ZLBDataManager.m in Sources */,
 				855BBAEA1C390B4A00D8C1F1 /* SDWebImageDecoder.m in Sources */,
@@ -1062,6 +1108,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/ZLBPrefixHeader.pch";
 				INFOPLIST_FILE = VideoPlayer_LBZhang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarena.VideoPlayer-LBZhang";
@@ -1073,6 +1120,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/ZLBPrefixHeader.pch";
 				INFOPLIST_FILE = VideoPlayer_LBZhang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarena.VideoPlayer-LBZhang";
