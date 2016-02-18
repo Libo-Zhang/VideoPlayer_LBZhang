@@ -50,8 +50,9 @@
 @property (nonatomic, strong)AVPlayer *player;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
 @property (nonatomic, assign) BOOL isPlayOrParse;
-//  保存该视频资源的总时长，快进或快退的时候要用
+//保存该视频资源的总时长，快进或快退的时候要用
 @property (nonatomic, assign) CGFloat totalMovieDuration;
+//
 @property (nonatomic, strong) id playbackObserver;
 @end
 
