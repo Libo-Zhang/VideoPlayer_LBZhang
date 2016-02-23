@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-extern "C" {
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-    
-#include <libswscale/swscale.h>
-}
-@interface ZLBFFmpegDecodeToYUV : UIViewController
 
+
+@interface ZLBFFmpegDecodeToYUV : UIViewController
+@property (nonatomic, strong) NSString *url;
 @end

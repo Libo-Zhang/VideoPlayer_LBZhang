@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="esv-5Q-CdU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Krh-fI-6x2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAD-XK-sg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1017" y="-138"/>
+            <point key="canvasLocation" x="-1131" y="-155"/>
         </scene>
         <!--OpenGLES RenderYUV Image-->
         <scene sceneID="tuv-Vr-aLW">
@@ -258,12 +258,59 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t2e-1O-Ncl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1026" y="523"/>
+            <point key="canvasLocation" x="-1051" y="503"/>
+        </scene>
+        <!--Other View Controller-->
+        <scene sceneID="Rhq-AE-C8s">
+            <objects>
+                <viewController storyboardIdentifier="thirdViewController" id="8zZ-Ok-C2y" customClass="OtherViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2FS-gF-rG2"/>
+                        <viewControllerLayoutGuide type="bottom" id="TBe-8e-Ssf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4c1-lF-2bZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ldv-DW-8fL">
+                                <rect key="frame" x="135" y="59" width="330" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="doy-ry-aYi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnh-2a-Uju">
+                                <rect key="frame" x="275" y="214" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="rSc-Qb-gvB"/>
+                                </constraints>
+                                <state key="normal" title="播放"/>
+                                <connections>
+                                    <action selector="play:" destination="8zZ-Ok-C2y" eventType="touchUpInside" id="0qS-yg-Jed"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wnh-2a-Uju" firstAttribute="centerX" secondItem="4c1-lF-2bZ" secondAttribute="centerX" id="Mem-GR-CKI"/>
+                            <constraint firstItem="Ldv-DW-8fL" firstAttribute="centerX" secondItem="4c1-lF-2bZ" secondAttribute="centerX" id="Wy3-FJ-gb6"/>
+                            <constraint firstItem="Ldv-DW-8fL" firstAttribute="top" secondItem="2FS-gF-rG2" secondAttribute="bottom" constant="39" id="iQs-bO-lMj"/>
+                            <constraint firstItem="wnh-2a-Uju" firstAttribute="top" secondItem="Ldv-DW-8fL" secondAttribute="bottom" constant="125" id="s9E-ph-e4w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="Ldv-DW-8fL" id="yQ1-JW-8o8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="em8-jM-bL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-365" y="527"/>
         </scene>
         <!--Fmpeg Decode ToYUV-->
         <scene sceneID="qb9-m7-w9v">
             <objects>
-                <viewController storyboardIdentifier="thirdViewController" id="4dH-0P-N2D" customClass="ZLBFFmpegDecodeToYUV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="play" id="4dH-0P-N2D" customClass="ZLBFFmpegDecodeToYUV" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2jE-tW-jAB"/>
                         <viewControllerLayoutGuide type="bottom" id="yMH-Yu-bVo"/>
@@ -276,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJW-ia-zQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-400" y="537"/>
+            <point key="canvasLocation" x="301" y="527"/>
         </scene>
         <!--Side Menu Root View Contoller-->
         <scene sceneID="lGk-wa-GYL">
@@ -294,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJv-fV-VrW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1026" y="1177"/>
+            <point key="canvasLocation" x="-1116" y="1164"/>
         </scene>
         <!--公开课-->
         <scene sceneID="CsT-bh-T39">
