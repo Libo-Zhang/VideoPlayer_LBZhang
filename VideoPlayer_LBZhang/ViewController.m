@@ -62,6 +62,7 @@
 - (AVPlayer *)player {
     if (!_player) {
         if (self.movieURL) {
+            //self.movieURL = [NSURL URLWithString:@"http://localhost/2.rmvb"];
             AVPlayerItem *item = [AVPlayerItem playerItemWithURL:self.movieURL];
             _player = [AVPlayer playerWithPlayerItem:item];
             //音量

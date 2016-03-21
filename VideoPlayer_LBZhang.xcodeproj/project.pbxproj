@@ -131,6 +131,8 @@
 		D8009D921C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D911C6F7A0A00DE75A7 /* RESideMenuRootViewContoller.m */; };
 		D8009D951C6F7AB200DE75A7 /* RESideLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D941C6F7AB200DE75A7 /* RESideLeftViewController.m */; };
 		D8009D981C6F80B800DE75A7 /* ZLBNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8009D971C6F80B800DE75A7 /* ZLBNavController.m */; };
+		D812C20C1C8DB29A00284FF0 /* LocalPlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D812C20B1C8DB29A00284FF0 /* LocalPlayVC.m */; };
+		D820314D1CA04529003785FD /* ZLBOpenGLESRenderYUVImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D820314C1CA04529003785FD /* ZLBOpenGLESRenderYUVImage.mm */; };
 		D85FE0321C7B4A67001A8CD4 /* 1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D85FE0301C7B4A67001A8CD4 /* 1.mp4 */; };
 		D85FE0331C7B4A67001A8CD4 /* 2.rmvb in Resources */ = {isa = PBXBuildFile; fileRef = D85FE0311C7B4A67001A8CD4 /* 2.rmvb */; };
 		D85FE0371C7B4EBF001A8CD4 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D85FE0361C7B4EBF001A8CD4 /* OtherViewController.m */; };
@@ -139,7 +141,6 @@
 		D8995A921C64D5660042A0CD /* ZLBWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A911C64D5660042A0CD /* ZLBWebViewViewController.m */; };
 		D8995A951C64E0560042A0CD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D8995A941C64E0560042A0CD /* MBProgressHUD.m */; };
 		D8E3A8E11C73771C00C3CF1D /* jpgimage1_image_640_480.yuv in Resources */ = {isa = PBXBuildFile; fileRef = D8E3A8E01C73771C00C3CF1D /* jpgimage1_image_640_480.yuv */; };
-		D8E3A8E41C73778300C3CF1D /* ZLBOpenGLESRenderYUVImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D8E3A8E31C73778300C3CF1D /* ZLBOpenGLESRenderYUVImage.mm */; };
 		D8E3A8E71C7377D000C3CF1D /* OpenGLView20.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E3A8E61C7377D000C3CF1D /* OpenGLView20.m */; };
 		D8E3A8EA1C7379CE00C3CF1D /* ZLBFFmpegDecodeToYUV.mm in Sources */ = {isa = PBXBuildFile; fileRef = D8E3A8E91C7379CE00C3CF1D /* ZLBFFmpegDecodeToYUV.mm */; };
 		D8E3A8ED1C737AA100C3CF1D /* ScreenFlow.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D8E3A8EB1C737AA100C3CF1D /* ScreenFlow.mp4 */; };
@@ -375,6 +376,10 @@
 		D8009D941C6F7AB200DE75A7 /* RESideLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideLeftViewController.m; sourceTree = "<group>"; };
 		D8009D961C6F80B800DE75A7 /* ZLBNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBNavController.h; sourceTree = "<group>"; };
 		D8009D971C6F80B800DE75A7 /* ZLBNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBNavController.m; sourceTree = "<group>"; };
+		D812C20A1C8DB29A00284FF0 /* LocalPlayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalPlayVC.h; sourceTree = "<group>"; };
+		D812C20B1C8DB29A00284FF0 /* LocalPlayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalPlayVC.m; sourceTree = "<group>"; };
+		D820314B1CA04529003785FD /* ZLBOpenGLESRenderYUVImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBOpenGLESRenderYUVImage.h; sourceTree = "<group>"; };
+		D820314C1CA04529003785FD /* ZLBOpenGLESRenderYUVImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZLBOpenGLESRenderYUVImage.mm; sourceTree = "<group>"; };
 		D85FE0301C7B4A67001A8CD4 /* 1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.mp4; sourceTree = "<group>"; };
 		D85FE0311C7B4A67001A8CD4 /* 2.rmvb */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.rmvb; sourceTree = "<group>"; };
 		D85FE0351C7B4EBF001A8CD4 /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
@@ -388,8 +393,6 @@
 		D8995A931C64E0560042A0CD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D8995A941C64E0560042A0CD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		D8E3A8E01C73771C00C3CF1D /* jpgimage1_image_640_480.yuv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jpgimage1_image_640_480.yuv; sourceTree = "<group>"; };
-		D8E3A8E21C73778300C3CF1D /* ZLBOpenGLESRenderYUVImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBOpenGLESRenderYUVImage.h; sourceTree = "<group>"; };
-		D8E3A8E31C73778300C3CF1D /* ZLBOpenGLESRenderYUVImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZLBOpenGLESRenderYUVImage.mm; sourceTree = "<group>"; };
 		D8E3A8E51C7377D000C3CF1D /* OpenGLView20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView20.h; sourceTree = "<group>"; };
 		D8E3A8E61C7377D000C3CF1D /* OpenGLView20.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView20.m; sourceTree = "<group>"; };
 		D8E3A8E81C7379CE00C3CF1D /* ZLBFFmpegDecodeToYUV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBFFmpegDecodeToYUV.h; sourceTree = "<group>"; };
@@ -584,9 +587,8 @@
 		853677EF1C38E8940037301B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D820314E1CA0452C003785FD /* yuv */,
 				D85FE03B1C7B51EB001A8CD4 /* 公开课 */,
-				D85FE03A1C7B51DC001A8CD4 /* 转成yuv */,
-				D85FE0391C7B51D1001A8CD4 /* yuv播放 */,
 				D85FE0341C7B4EA2001A8CD4 /* 整体视频播放 */,
 				85CAC10E1C35502D002897DB /* ViewController.h */,
 				85CAC10F1C35502D002897DB /* ViewController.m */,
@@ -977,6 +979,15 @@
 			path = RESideMenu;
 			sourceTree = "<group>";
 		};
+		D820314E1CA0452C003785FD /* yuv */ = {
+			isa = PBXGroup;
+			children = (
+				D820314B1CA04529003785FD /* ZLBOpenGLESRenderYUVImage.h */,
+				D820314C1CA04529003785FD /* ZLBOpenGLESRenderYUVImage.mm */,
+			);
+			name = yuv;
+			sourceTree = "<group>";
+		};
 		D85FE0341C7B4EA2001A8CD4 /* 整体视频播放 */ = {
 			isa = PBXGroup;
 			children = (
@@ -988,25 +999,11 @@
 			name = "整体视频播放";
 			sourceTree = "<group>";
 		};
-		D85FE0391C7B51D1001A8CD4 /* yuv播放 */ = {
-			isa = PBXGroup;
-			children = (
-				D8E3A8E21C73778300C3CF1D /* ZLBOpenGLESRenderYUVImage.h */,
-				D8E3A8E31C73778300C3CF1D /* ZLBOpenGLESRenderYUVImage.mm */,
-			);
-			name = "yuv播放";
-			sourceTree = "<group>";
-		};
-		D85FE03A1C7B51DC001A8CD4 /* 转成yuv */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "转成yuv";
-			sourceTree = "<group>";
-		};
 		D85FE03B1C7B51EB001A8CD4 /* 公开课 */ = {
 			isa = PBXGroup;
 			children = (
+				D812C20A1C8DB29A00284FF0 /* LocalPlayVC.h */,
+				D812C20B1C8DB29A00284FF0 /* LocalPlayVC.m */,
 				D8995A901C64D5660042A0CD /* ZLBWebViewViewController.h */,
 				D8995A911C64D5660042A0CD /* ZLBWebViewViewController.m */,
 				855BBA591C38FA8600D8C1F1 /* ZLBMainViewController.h */,
@@ -1334,7 +1331,6 @@
 				855BBB451C390B7100D8C1F1 /* MJRefreshNormalHeader.m in Sources */,
 				D8995A951C64E0560042A0CD /* MBProgressHUD.m in Sources */,
 				855BBAE21C390B4A00D8C1F1 /* UIRefreshControl+AFNetworking.m in Sources */,
-				D8E3A8E41C73778300C3CF1D /* ZLBOpenGLESRenderYUVImage.mm in Sources */,
 				855BBB461C390B7100D8C1F1 /* MJRefreshStateHeader.m in Sources */,
 				D8995A891C636D7D0042A0CD /* ZLBContent.m in Sources */,
 				855BBB491C390B7100D8C1F1 /* UIScrollView+MJExtension.m in Sources */,
@@ -1378,12 +1374,14 @@
 				855BBAE81C390B4A00D8C1F1 /* SDImageCache.m in Sources */,
 				85CAC10D1C35502D002897DB /* AppDelegate.m in Sources */,
 				855BBAED1C390B4A00D8C1F1 /* SDWebImageManager.m in Sources */,
+				D812C20C1C8DB29A00284FF0 /* LocalPlayVC.m in Sources */,
 				855BBAF21C390B4A00D8C1F1 /* UIImage+WebP.m in Sources */,
 				855BBAD71C390B4A00D8C1F1 /* AFSecurityPolicy.m in Sources */,
 				855BBA671C3909FE00D8C1F1 /* ZLBClassVos.m in Sources */,
 				855BBAD91C390B4A00D8C1F1 /* AFURLRequestSerialization.m in Sources */,
 				855BBB4A1C390B7100D8C1F1 /* UIScrollView+MJRefresh.m in Sources */,
 				855BBAD61C390B4A00D8C1F1 /* AFNetworkReachabilityManager.m in Sources */,
+				D820314D1CA04529003785FD /* ZLBOpenGLESRenderYUVImage.mm in Sources */,
 				855BBAF41C390B4A00D8C1F1 /* UIImageView+WebCache.m in Sources */,
 				855BBB0B1C390B4A00D8C1F1 /* TSMessageView.m in Sources */,
 				855BBAEB1C390B4A00D8C1F1 /* SDWebImageDownloader.m in Sources */,
@@ -1529,6 +1527,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/VideoPlayer_LBZhang/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/VideoPlayer_LBZhang/ViewControllers/lib",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarena.VideoPlayer-LBZhang";
@@ -1547,6 +1546,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/VideoPlayer_LBZhang/Libraries/FFmpeg-iOS/lib",
+					"$(PROJECT_DIR)/VideoPlayer_LBZhang/ViewControllers/lib",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tarena.VideoPlayer-LBZhang";

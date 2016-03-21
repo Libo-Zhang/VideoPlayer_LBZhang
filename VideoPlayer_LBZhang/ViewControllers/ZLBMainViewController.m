@@ -196,6 +196,7 @@
             ZLBClassContentVideo *video = videoList.firstObject;
             NSURL *url = [NSURL URLWithString:video.repovideourlmp4];
             vc.movieURL = url;
+            //vc.movieURL = [NSURL URLWithString:@"http://localhost/2.rmvb"];
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
           
            // self.navigationController.interactivePopGestureRecognizer.enabled = NO;

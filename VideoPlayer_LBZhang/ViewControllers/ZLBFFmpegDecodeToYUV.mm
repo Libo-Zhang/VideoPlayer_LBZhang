@@ -8,6 +8,7 @@
 
 #import "ZLBFFmpegDecodeToYUV.h"
 #import "OpenGLView20.h"
+#import <AVFoundation/AVFoundation.h>
 extern "C" {
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
@@ -33,9 +34,23 @@ extern "C" {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    myview = [[OpenGLView20 alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+ 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"123" style:UIBarButtonItemStyleDone target:self action:@selector(rightClick:)];
+    myview = [[OpenGLView20 alloc]initWithFrame:CGRectMake(20, 70, self.view.frame.size.width - 40, self.view.frame.size.height - 70)];
     [self.view addSubview:myview];
+
+  
+    
+//    AVPlayer *player = [AVPlayer playerWithURL:[NSURL URLWithString:self.url]];
+//  
+//    
+//    //把播放器中的界面拿出来
+//    //Layer  view 的底层
+//    AVPlayerLayer *playLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//    playLayer.frame = CGRectMake(20, 100, 200, 200);
+//    [self.view.layer addSublayer:playLayer];
+//    [player play];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -46,6 +61,12 @@ extern "C" {
 //    const char *filepath= [path UTF8String];
 //    NSString *str = @"http://localhost/2.rmvb";
     const char *filepath= [self.url UTF8String];
+    
+    
+    
+
+    
+    
     av_register_all();
     avformat_network_init();
     pFormatCtx = avformat_alloc_context();
@@ -53,7 +74,6 @@ extern "C" {
         printf("Couldn't open input stream.\n");
         exit(1);
     }
-    
     /*
      * av_find_stream_info()：ffmpeg版本更新后没有这个函数了，用avformat_find_stream_info这个函数，可以自己看一下版本更新改动
      */
@@ -87,6 +107,9 @@ extern "C" {
      * avcodec_open()：ffmpeg版本更新后没有这个函数了，用avformat_find_stream_info这个函数，可以自己看一下版本更新改动
      * avcodec_open2(AVCodecContext *avctx, const AVCodec *codec, AVDictionary **options)
      */
+    
+    //avformat_find_stream_info(pFormatCtx, NULL)<0
+    
     //    if(avcodec_open(pCodecCtx, pCodec)<0)
     if(avcodec_open2(pCodecCtx, pCodec, NULL)<0)
     {
@@ -139,10 +162,13 @@ extern "C" {
                     memcpy(u + w / 2 * i, pict->data[1] + pict->linesize[1] * i, w / 2);
                 for (int i=0; i<h/2; i++)
                     memcpy(v + w / 2 * i, pict->data[2] + pict->linesize[2] * i, w / 2);
-                
+             
+     
                 [myview setVideoSize:pFrame->width height:pFrame->height];
                 [myview displayYUV420pData:buf width:pFrame->width height:pFrame->height];
-                free(buf);
+                        
+                        free(buf);
+             
             }
         }
         av_free_packet(packet);
@@ -153,8 +179,16 @@ extern "C" {
     avformat_close_input(&pFormatCtx);
     
 }
-
-
+-(void)dealloc{
+    NSLog(@"dealloc~~~");
+}
+-(void)rightClick:(UIBarButtonItem *)item{
+    NSLog(@"click~~~");
+    [myview clearFrame];
+}
+-(void)btnClick{
+    NSLog(@"111");
+}
 
 
 @end
